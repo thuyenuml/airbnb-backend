@@ -8,4 +8,6 @@ public interface CateRoomService {
     List<CategoryRoom> getAllCateRoom();
 
     void saveCateRoomDB(CategoryRoom categoryRoomRequest);
+
+    CategoryRoom getCateRoomById(Long id);
 }

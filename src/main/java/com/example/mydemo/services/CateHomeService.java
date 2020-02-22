@@ -8,4 +8,6 @@ public interface CateHomeService {
     List<CategoryHome> getAllCateHomes();
 
     void addNewCateHome(CategoryHome categoryHome);
+
+    CategoryHome getCateHomeById(Long id);
 }

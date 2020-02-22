@@ -29,4 +29,14 @@ public class CateRoomController {
         cateRoomService.saveCateRoomDB(categoryRoomRequest);
         return new ResponseEntity<>(new ResponseMessage("registered successfully"), HttpStatus.OK);
     }
+    //    @GetMapping("/name-cate-room/{id}")
+//    public ResponseEntity<?> getName(@PathVariable Long id){
+//        CategoryRoom categoryRoom = cateRoomService.getCateRoomById(id);
+//        return new ResponseEntity<String>(categoryRoom.getNameCateRoom(), HttpStatus.OK);
+//    }
+    @GetMapping("/name-cate-room")
+    public ResponseEntity<?> getNameCateRoom(@RequestParam Long id){
+        CategoryRoom categoryRoom = cateRoomService.getCateRoomById(id);
+        return new ResponseEntity<CategoryRoom>(categoryRoom, HttpStatus.OK);
+    }
 }

@@ -87,4 +87,10 @@ public class HomeController {
         return new ResponseEntity<List<Home>>(homeService.getAllHome(), HttpStatus.OK);
     }
 
+    @GetMapping("/home/{id}")
+    public ResponseEntity<Home> getHome(@PathVariable Long id){
+        Home home = homeService.findHomeById(id);
+        return new ResponseEntity<Home>(home, HttpStatus.OK);
+    }
+
 }

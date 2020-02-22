@@ -23,4 +23,9 @@ public class CateHomeServiceImpl implements CateHomeService {
     public void addNewCateHome(CategoryHome categoryHome) {
         cateHomeRepository.save(categoryHome);
     }
+
+    @Override
+    public CategoryHome getCateHomeById(Long id) {
+        return cateHomeRepository.findById(id).orElse(null);
+    }
 }

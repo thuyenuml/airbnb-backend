@@ -22,4 +22,9 @@ public class CateRoomServiceImpl implements CateRoomService {
     public void saveCateRoomDB(CategoryRoom categoryRoomRequest) {
         cateRoomRepository.save(categoryRoomRequest);
     }
+
+    @Override
+    public CategoryRoom getCateRoomById(Long id) {
+        return cateRoomRepository.findById(id).orElse(null);
+    }
 }
