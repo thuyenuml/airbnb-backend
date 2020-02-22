@@ -10,6 +10,7 @@ public class Home {
     private Long id;
     private String name;
     private Double price;
+    private String image;
 
     @ManyToOne
     @JoinColumn(name = "cate_room_id")
@@ -21,6 +22,14 @@ public class Home {
 
     public Home(){
 
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Long getId() {

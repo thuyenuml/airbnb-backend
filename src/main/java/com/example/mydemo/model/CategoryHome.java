@@ -1,6 +1,7 @@
 package com.example.mydemo.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,7 +13,7 @@ public class CategoryHome {
     private Long id;
     private String nameCateHome;
 
-    @OneToMany(mappedBy = "cateHome")
+    @OneToMany(mappedBy = "cateHome", cascade = CascadeType.ALL)
     private Set<Home> homes;
 
     public CategoryHome(){

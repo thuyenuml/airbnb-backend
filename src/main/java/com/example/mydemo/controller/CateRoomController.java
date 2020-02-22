@@ -17,7 +17,7 @@ public class CateRoomController {
     @Autowired
     CateRoomService cateRoomService;
 
-    @GetMapping("")
+    @GetMapping("/cate-rooms")
     public ResponseEntity<?> getCateRoomDB(){
         List<CategoryRoom> categoryRoomList = cateRoomService.getAllCateRoom();
         return new ResponseEntity<List<CategoryRoom>>(categoryRoomList, HttpStatus.OK);
