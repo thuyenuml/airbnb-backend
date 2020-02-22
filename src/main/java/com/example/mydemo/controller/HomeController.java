@@ -2,6 +2,7 @@ package com.example.mydemo.controller;
 
 import com.example.mydemo.message.response.ResponseMessage;
 import com.example.mydemo.model.Home;
+import com.example.mydemo.model.Home_Form;
 import com.example.mydemo.services.HomeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,18 +30,18 @@ public class HomeController {
     private HomeService homeService;
 
     @PostMapping("/home/add-home")//add new Home
-    public ResponseEntity<?> createHome(@RequestParam("home") String home, @RequestPart("file") MultipartFile file) throws IOException {
-        Home homeDTO = new ObjectMapper().readValue(home, Home.class);
+    public ResponseEntity<?> createHome(@RequestParam("home") String homeForm, @RequestPart("file") MultipartFile file) throws IOException {
+        Home_Form homeFormDTO = new ObjectMapper().readValue(homeForm, Home_Form.class);
+        Home home = new Home();
+        homeService.setHomeProperties(home, homeFormDTO);
         if(!file.isEmpty()){
             String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename().replace(" ", "");
             Path pathFile = Paths.get("uploads").resolve(fileName).toAbsolutePath();
             Files.copy(file.getInputStream(), pathFile);
-            homeDTO.setImage(fileName);
-//            home.setImage(fileName);
+            home.setImage(fileName);
         }
 
-        homeService.saveHome(homeDTO);
-//        homeService.saveHome(home);
+        homeService.saveHome(home);
         return new ResponseEntity<>(new ResponseMessage("Home is created successfully!"), HttpStatus.OK);
     }
 

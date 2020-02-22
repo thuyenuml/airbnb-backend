@@ -1,6 +1,7 @@
 package com.example.mydemo.services;
 
 import com.example.mydemo.model.Home;
+import com.example.mydemo.model.Home_Form;
 
 import java.util.List;
 
@@ -10,4 +11,5 @@ public interface HomeService {
     void saveHome(Home home);
 
     List<Home> getAllHome();
+    void setHomeProperties(Home home, Home_Form homeForm);
 }
