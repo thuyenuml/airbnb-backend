@@ -28,4 +28,10 @@ public class CateHomeController {
         cateHomeService.addNewCateHome(categoryHome);
         return new ResponseEntity<>(new ResponseMessage("registered successfully"), HttpStatus.OK);
     }
+
+    @GetMapping("/name-cate-home")
+    public ResponseEntity<?> getNameCateHome(@RequestParam Long id){
+        CategoryHome categoryHome = cateHomeService.getCateHomeById(id);
+        return new ResponseEntity<CategoryHome>(categoryHome, HttpStatus.OK);
+    }
 }
