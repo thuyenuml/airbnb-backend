@@ -6,6 +6,8 @@ import com.example.mydemo.services.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class HomeServiceImpl implements HomeService {
 
@@ -20,5 +22,10 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public void saveHome(Home home) {
         homeRepository.save(home);
+    }
+
+    @Override
+    public List<Home> getAllHome() {
+        return homeRepository.findAll();
     }
 }
